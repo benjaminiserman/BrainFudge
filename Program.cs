@@ -6,7 +6,7 @@ namespace BrainFudge
     class Program
     {
         static string code;
-        static List<int> cells = new() { 0 };
+        static List<int> cells = new();
         static int currentCell = 0, currentInstruction = 0;
         static int instructionsRan = 0;
 
@@ -15,10 +15,17 @@ namespace BrainFudge
             while (true)
             {
                 cells.Clear();
+                cells.Add(0);
 
-                Console.WriteLine("Enter BrainFudge code:");
+                Console.WriteLine("Enter BrainFudge code: (press enter twice to run)");
 
-                code = Console.ReadLine().Trim();
+                string input;
+                do
+                {
+                    input = Console.ReadLine().Trim();
+                    code += input;
+                }
+                while (input != string.Empty);
 
                 while (currentInstruction < code.Length)
                 {
