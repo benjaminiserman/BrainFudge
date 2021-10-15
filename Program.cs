@@ -14,6 +14,8 @@ namespace BrainFudge
         {
             while (true)
             {
+                cells.Clear();
+
                 Console.WriteLine("Enter BrainFudge code:");
 
                 code = Console.ReadLine().Trim();
