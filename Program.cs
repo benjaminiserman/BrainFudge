@@ -100,10 +100,9 @@ namespace BrainFudge
 
         static void JumpForward()
         {
-            int open = 1;
             currentInstruction++;
 
-            for (; open > 0; currentInstruction++)
+            for (int open = 1; open > 0; currentInstruction++)
             {
                 if (code[currentInstruction] == '[') open++;
                 else if (code[currentInstruction] == ']') open--;
@@ -114,10 +113,9 @@ namespace BrainFudge
 
         static void JumpBack()
         {
-            int open = 1;
             currentInstruction--;
 
-            for (; open > 0; currentInstruction--)
+            for (int open = 1; open > 0; currentInstruction--)
             {
                 if (code[currentInstruction] == '[') open--;
                 else if (code[currentInstruction] == ']') open++;
