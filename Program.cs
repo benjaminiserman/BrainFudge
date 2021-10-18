@@ -15,6 +15,8 @@ namespace BrainFudge
             {
                 cells.Clear();
                 cells.Add(0);
+                currentCell = currentInstruction = instructionsRan = 0;
+                code = string.Empty;
 
                 Console.WriteLine("Enter BrainFudge code: (press enter twice to run)");
 
@@ -87,6 +89,11 @@ namespace BrainFudge
                 case ']':
                 {
                     if (cells[currentCell] != 0) JumpBack();
+                    break;
+                }
+                default:
+                {
+                    instructionsRan--;
                     break;
                 }
             }

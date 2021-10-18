@@ -15,8 +15,10 @@ int main()
 {
     while (true)
     {
+        instructionsRan = currentInstruction = currentCell = 0;
         cells.clear();
         cells.push_back(0);
+        code = "";
 
         printf("Enter BrainFudge code: (press enter twice to run)\n");
 
@@ -94,6 +96,11 @@ void interpret(char c)
         case ']':
         {
             if (cells[currentCell] != 0) jumpBack();
+            break;
+        }
+        default:
+        {
+            instructionsRan--;
             break;
         }
     }

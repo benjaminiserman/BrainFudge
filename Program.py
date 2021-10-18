@@ -26,6 +26,10 @@ def interpret(c: str):
         case ']':
             if (cells[currentCell] != 0):
                 jumpBack()
+        case _:
+            global instructionsRan
+            instructionsRan -= 1
+
 
 def expand(cell: int):
     for i in range(len(cells), cell + 1):
@@ -58,6 +62,8 @@ def jumpBack():
 while (True):
     cells.clear()
     cells.append(0)
+    currentCell = currentInstruction = instructionsRan = 0
+    code = ""
 
     print("Enter BrainFudge code: (press enter twice to run)")
 
