@@ -1,4 +1,3 @@
-
 code: str = str()
 cells: list[int] = []
 currentCell = currentInstruction = instructionsRan = 0
