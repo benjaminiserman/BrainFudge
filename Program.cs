@@ -72,7 +72,7 @@ namespace BrainFudge
                 }
                 case '.':
                 {
-                    Console.WriteLine((char)cells[currentCell]);
+                    Console.Write((char)cells[currentCell]);
                     break;
                 }
                 case ',':
