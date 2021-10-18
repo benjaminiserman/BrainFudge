@@ -7,8 +7,7 @@ namespace BrainFudge
     {
         static string code;
         static List<int> cells = new();
-        static int currentCell = 0, currentInstruction = 0;
-        static int instructionsRan = 0;
+        static int currentCell = 0, currentInstruction = 0, instructionsRan = 0;
 
         static void Main(string[] args)
         {
