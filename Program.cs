@@ -1,7 +1,6 @@
-﻿using System;
+﻿namespace BrainFudge;
+using System;
 using System.Collections.Generic;
-
-namespace BrainFudge;
 
 internal class Program
 {
