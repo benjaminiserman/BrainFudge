@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace BrainFudge
 {
-    class Program
+    internal class Program
     {
-        static string code;
-        static readonly List<int> cells = new();
-        static int currentCell = 0, currentInstruction = 0, instructionsRan = 0;
+        private static string _code;
+        private static readonly List<int> _cells = new();
+        private static int _currentCell = 0, _currentInstruction = 0, _instructionsRan = 0;
 
-        static void Main()
+        private static void Main()
         {
             while (true)
             {
-                cells.Clear();
-                cells.Add(0);
-                currentCell = currentInstruction = instructionsRan = 0;
-                code = string.Empty;
+                _cells.Clear();
+                _cells.Add(0);
+                _currentCell = _currentInstruction = _instructionsRan = 0;
+                _code = string.Empty;
 
                 Console.WriteLine("Enter BrainFudge code: (press enter twice to run)");
 
@@ -24,110 +24,110 @@ namespace BrainFudge
                 do
                 {
                     input = Console.ReadLine().Trim();
-                    code += input;
+                    _code += input;
                 }
                 while (input != string.Empty);
 
-                while (currentInstruction < code.Length)
+                while (_currentInstruction < _code.Length)
                 {
-                    Interpret(code[currentInstruction]);
+                    Interpret(_code[_currentInstruction]);
 
-                    currentInstruction++;
-                    instructionsRan++;
+                    _currentInstruction++;
+                    _instructionsRan++;
                 }
 
-                Console.WriteLine($"{instructionsRan} instructions ran.");
+                Console.WriteLine($"{_instructionsRan} instructions ran.");
                 Console.WriteLine("Cell Data:");
 
-                foreach (var x in cells) Console.WriteLine(x);
+                foreach (var x in _cells) Console.WriteLine(x);
 
                 Console.WriteLine();
             }
         }
 
-        static void Interpret(char c)
+        private static void Interpret(char c)
         {
             switch (c)
             {
                 case '>':
                 {
-                    currentCell++;
-                    Expand(currentCell);
+                    _currentCell++;
+                    Expand(_currentCell);
                     break;
                 }
                 case '<':
                 {
-                    currentCell--;
-                    Expand(currentCell);
+                    _currentCell--;
+                    Expand(_currentCell);
                     break;
                 }
                 case '+':
                 {
-                    cells[currentCell]++;
+                    _cells[_currentCell]++;
                     break;
                 }
                 case '-':
                 {
-                    cells[currentCell]--;
+                    _cells[_currentCell]--;
                     break;
                 }
                 case '.':
                 {
-                    Console.Write((char)cells[currentCell]);
+                    Console.Write((char)_cells[_currentCell]);
                     break;
                 }
                 case ',':
                 {
-                    cells[currentCell] = Console.ReadLine()[0];
+                    _cells[_currentCell] = Console.ReadLine()[0];
                     break;
                 }
                 case '[':
                 {
-                    if (cells[currentCell] == 0) JumpForward();
+                    if (_cells[_currentCell] == 0) JumpForward();
                     break;
                 }
                 case ']':
                 {
-                    if (cells[currentCell] != 0) JumpBack();
+                    if (_cells[_currentCell] != 0) JumpBack();
                     break;
                 }
                 default:
                 {
-                    instructionsRan--;
+                    _instructionsRan--;
                     break;
                 }
             }
         }
 
-        static void Expand(int cell)
+        private static void Expand(int cell)
         {
-            for (int i = cells.Count; i <= cell; i++) cells.Add(0);
+            for (int i = _cells.Count; i <= cell; i++) _cells.Add(0);
         }
 
-        static void JumpForward()
+        private static void JumpForward()
         {
-            currentInstruction++;
+            _currentInstruction++;
 
-            for (int open = 1; open > 0; currentInstruction++)
+            for (int open = 1; open > 0; _currentInstruction++)
             {
-                if (code[currentInstruction] == '[') open++;
-                else if (code[currentInstruction] == ']') open--;
+                if (_code[_currentInstruction] == '[') open++;
+                else if (_code[_currentInstruction] == ']') open--;
             }
 
-            currentInstruction--;
+            _currentInstruction--;
         }
 
-        static void JumpBack()
+        private static void JumpBack()
         {
-            currentInstruction--;
+            _currentInstruction--;
 
-            for (int open = 1; open > 0; currentInstruction--)
+            for (int open = 1; open > 0; _currentInstruction--)
             {
-                if (code[currentInstruction] == '[') open--;
-                else if (code[currentInstruction] == ']') open++;
+                if (_code[_currentInstruction] == '[') open--;
+                else if (_code[_currentInstruction] == ']') open++;
             }
 
-            currentInstruction++;
+            _currentInstruction++;
         }
     }
 }
