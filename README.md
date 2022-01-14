@@ -21,14 +21,24 @@ OR
 - You **do not** need to have .NET 6 installed
 - You have downloaded the file "standalone.zip" from the latest release
 
+OR
+
+- You have Python installed
+- You have downloaded the file "brainfudge.py" from the latest release
+
 Due to low demand, standalone builds for Mac OSX and Linux are not provided. If you'd like a standalone build for Mac OSX or Linux, [contact me](mailto:winggar1228@gmail.com).
 
 ## Usage
 
+- C#
 1. Download either "build.zip" or "standalone.zip" from the latest release, depending on your prerequisites.
 2. Unzip the file.
 3. Find the file "BrainFudge.exe" within the unzipped folder and run it.
-4. Enter BF code into the console window, and press enter twice to execute it.
+- Python
+1. Download the "brainfudge.py" file from the latest release.
+2. Run the file.
+
+Finally: Enter BF code into the console window, and press enter twice to execute it.
 
 ## License
 
