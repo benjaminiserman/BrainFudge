@@ -40,6 +40,11 @@ Due to low demand, standalone builds for Mac OSX and Linux are not provided. If 
 
 Finally: Enter BF code into the console window, and press enter twice to execute it.
 
+### Example Code: "Hello World!"
+Upon entering the following code, BrainFudge should output Hello World: 
+
+`++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.`
+
 ## License
 
 ![License](https://img.shields.io/github/license/winggar/BrainFudge?style=for-the-badge)
