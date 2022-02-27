@@ -38,10 +38,10 @@ def jumpForward():
     global currentInstruction
     currentInstruction += 1
     open = 1
-    while (open > 0):
-        if (code[currentInstruction] == '['):
+    while open > 0:
+        if code[currentInstruction] == '[':
             open += 1
-        elif (code[currentInstruction] == ']'):
+        elif code[currentInstruction] == ']':
             open -= 1
         currentInstruction += 1
     currentInstruction -= 1
@@ -50,15 +50,15 @@ def jumpBack():
     global currentInstruction
     currentInstruction -= 1
     open = 1
-    while (open > 0):
-        if (code[currentInstruction] == '['):
+    while open > 0:
+        if code[currentInstruction] == '[':
             open -= 1
-        elif (code[currentInstruction] == ']'):
+        elif code[currentInstruction] == ']':
             open += 1
         currentInstruction -= 1
     currentInstruction += 1
 
-while (True):
+while True:
     cells.clear()
     cells.append(0)
     currentCell = currentInstruction = instructionsRan = 0
@@ -66,13 +66,13 @@ while (True):
 
     print("Enter BrainFudge code: (press enter twice to run)")
 
-    while (True): # do while loop
+    while True: # do while loop
         codeLine = input()
         code += codeLine
-        if (codeLine.strip() == ""):
+        if codeLine.strip() == "":
             break
 
-    while (currentInstruction < len(code)):
+    while currentInstruction < len(code):
         interpret(code[currentInstruction])
 
         currentInstruction += 1
