@@ -1,0 +1,55 @@
+$current_instruction = 0;
+$pointer = 0;
+$instructions_ran = 0;
+
+@point = $pointer + 0.25;
+@get = get($0, $current_instruction);
+
+@forward = (
+	$open = 1;
+	$current_instruction += 1;
+	
+	while($open > 0,
+		if($current_instruction >= len($0), throw("mismatched brackets, ] not found"));
+		if(@get == '[', $open += 1);
+		if(@get == ']', $open -= 1);
+		$current_instruction += 1;
+	);
+	
+	$current_instruction -= 1;
+);
+
+@back = (
+	$open = 1;
+	$current_instruction -= 1;
+	
+	while($open > 0,
+		if($current_instruction < 0, throw("mismatched brackets, [ not found"));
+		if(@get == '[', $open -= 1);
+		if(@get == ']', $open += 1);
+		$current_instruction -= 1;
+	);
+	
+	$current_instruction += 1;
+);
+
+@bf = (
+	while($current_instruction < len($0),
+		switch(@get,
+			'>', $pointer += 1,
+			'<', $pointer -= 1,
+			'+', $@point += 1,
+			'-', $@point -= 1,
+			'.', $@point : $TXT,
+			',', ($0.5 ? $TXT; $@point = $1.5),
+			'[', if($@point == 0, @forward),
+			']', if($@point != 0, @back),
+			$instructions_ran -= 1
+		);
+		
+		$current_instruction += 1;
+		$instructions_ran += 1;
+	);
+	
+	$instructions_ran;
+);
